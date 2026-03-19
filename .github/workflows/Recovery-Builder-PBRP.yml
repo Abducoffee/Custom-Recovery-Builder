@@ -64,6 +64,11 @@ jobs:
         echo "Device Name: ${{ inputs.DEVICE_NAME }}"
         echo "Build Target: ${{ inputs.BUILD_TARGET }}image"
 
+        - name: Fix missing fonts
+  run: |
+    cd android-recovery
+    git clone https://github.com/PitchBlackRecoveryProject/external_noto-fonts.git external/noto-fonts || mkdir -p external/noto-fonts/other
+
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
       
